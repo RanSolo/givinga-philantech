@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@givinga-philantech/hooks": ["libs/hooks/src/index.ts"],
+      "@givinga-philantech/interfaces": ["libs/interfaces/src/index.ts"],
+      "@givinga-philantech/ui-shared/nav": ["libs/ui-shared/nav/src/index.ts"],
+      "@givinga-philantech/test-utils": [
+        "apps/charity-forward-facing/test-utils.tsx"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

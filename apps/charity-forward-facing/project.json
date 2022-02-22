@@ -1,0 +1,87 @@
+{
+  "root": "apps/charity-forward-facing",
+  "sourceRoot": "apps/charity-forward-facing/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/charity-forward-facing",
+        "index": "apps/charity-forward-facing/src/index.html",
+        "baseHref": "/",
+        "main": "apps/charity-forward-facing/src/main.tsx",
+        "polyfills": "apps/charity-forward-facing/src/polyfills.ts",
+        "tsConfig": "apps/charity-forward-facing/tsconfig.app.json",
+        "assets": [
+          "apps/charity-forward-facing/src/favicon.ico",
+          "apps/charity-forward-facing/src/assets",
+          "apps/charity-forward-facing/src/mockServiceWorker.js"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/charity-forward-facing/src/environments/environment.ts",
+              "with": "apps/charity-forward-facing/src/environments/environment.prod.ts"
+            },
+            {
+              "replace": "apps/charity-forward-facing/src/mocks/handlers.ts",
+              "with": "apps/charity-forward-facing/src/mocks/handlers.prod.ts"
+            }
+          ],
+          "assets": [
+            "apps/charity-forward-facing/src/favicon.ico",
+            "apps/charity-forward-facing/src/assets"
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "charity-forward-facing:build",
+        "hmr": true,
+        "proxyConfig": "apps/charity-forward-facing/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "charity-forward-facing:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/charity-forward-facing/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/charity-forward-facing"],
+      "options": {
+        "assets": [
+          "apps/charity-forward-facing/src/favicon.ico",
+          "apps/charity-forward-facing/src/assets",
+          "apps/charity-forward-facing/src/mockServiceWorker.js"
+        ],
+        "jestConfig": "apps/charity-forward-facing/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["frontend"]
+}

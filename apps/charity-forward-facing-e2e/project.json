@@ -1,0 +1,28 @@
+{
+  "root": "apps/charity-forward-facing-e2e",
+  "sourceRoot": "apps/charity-forward-facing-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/charity-forward-facing-e2e/cypress.json",
+        "devServerTarget": "charity-forward-facing:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "charity-forward-facing:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/charity-forward-facing-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["charity-forward-facing"]
+}
